@@ -22,73 +22,181 @@
 
 #include <stdio.h>
 
-int main() {
-    int chonChucNang;
+// ===== CHUC NANG 1 =====
+void chucNang1(){
+    int n;
+    printf("Nhap so nguyen: ");
+    scanf("%d",&n);
 
-    do {
-        printf("Chon chuc nang:\n");
-        printf("1. Kiem tra so nguyen\n");
-        printf("2. Tim Uoc so chung va boi so chung cua 2 so\n");
-        printf("3. Tinh tien cho quan Karaoke\n");
-        printf("4. Tinh tien dien\n");
-        printf("5. Chuc nang doi tien\n");
-        printf("6. Tinh lai suat vay ngan hang vay tra gop\n");
-        printf("7. Vay tien mua xe\n");
-        printf("8. Sap xep thong tin sinh vien\n");
-        printf("9. Game FPOLY-LOTT\n");
-        printf("10. Tinh toan phan so\n");
-        printf("0. Thoat\n");
-        printf("Nhap lua chon cua ban: ");
-        scanf("%d", &chonChucNang);
+    if(n%2==0) printf("So chan\n");
+    else printf("So le\n");
+}
 
-        switch (chonChucNang) {
-            case 1:
-                // Gọi hàm kiểm tra số nguyên
-                printf("DA CHON CHUC NANG 1: KIEM TRA SO NGUYEN\n");
-                break;
-            case 2:
-                // Gọi hàm tìm Ước số chung và bội số chung
-                printf("DA CHON CHUC NANG 2: TIM UOC SO CHUNG VA BOI SO CHUNG CUA 2 SO\n");
-                break;
-            case 3:
-                // Gọi hàm tính tiền cho quán Karaoke
-                printf("DA CHON CHUC NANG 3: TINH TIEN CHO QUAN KARAOKE\n");
-                break;
-            case 4:
-                // Gọi hàm tính tiền điện
-                printf("DA CHON CHUC NANG 4: TINH TIEN DIEN\n");
-                break;
-            case 5:
-                // Gọi hàm đổi tiền
-                printf("DA CHON CHUC NANG 5: DOI TIEN\n");
-                break;
-            case 6:
-                // Gọi hàm tính lãi suất vay ngân hàng
-                printf("DA CHON CHUC NANG 6: TINH LAI SUAT VAY NGAN HANG VAY TRA GOP\n");
-                break;
-            case 7:
-                // Gọi hàm vay tiền mua xe
-                printf("DA CHON CHUC NANG 7: VAY TIEN MUA XE\n");
-                break;
-            case 8:
-                // Gọi hàm sắp xếp thông tin sinh viên
-                printf("DA CHON CHUC NANG 8: SAP XEP THONG TIN SINH VIEN\n");
-                break;
-            case 9:
-                // Gọi hàm game FPOLY-LOTT
-                printf("DA CHON CHUC NANG 9: GAME FPOLY-LOTT\n");
-                break;
-            case 10:
-                // Gọi hàm tính toán phân số
-                printf("DA CHON CHUC NANG 10: TINH TOAN PHAN SO\n");
-                break;
-            case 0:
-                printf("Thoat chuong trinh.\n");
-                break;
-            default:
-                printf("Lua chon khong hop le. Vui long chon lai.\n");
+// ===== HAM UCLN =====
+int UCLN(int a,int b){
+    while(a!=b){
+        if(a>b) a=a-b;
+        else b=b-a;
+    }
+    return a;
+}
+
+// ===== CHUC NANG 2 =====
+void chucNang2(){
+    int a,b;
+    printf("Nhap a b: ");
+    scanf("%d%d",&a,&b);
+
+    int ucln = UCLN(a,b);
+    int bcnn = (a*b)/ucln;
+
+    printf("UCLN = %d\n",ucln);
+    printf("BCNN = %d\n",bcnn);
+}
+
+// ===== CHUC NANG 3 =====
+void chucNang3(){
+    int vao,ra;
+    printf("Nhap gio vao gio ra: ");
+    scanf("%d%d",&vao,&ra);
+
+    int gio = ra - vao;
+    int tien = gio * 50000;
+
+    printf("Tien karaoke = %d\n",tien);
+}
+
+// ===== CHUC NANG 4 =====
+void chucNang4(){
+    int so;
+    float tien;
+
+    printf("Nhap so dien: ");
+    scanf("%d",&so);
+
+    if(so<=50) tien=so*1678;
+    else if(so<=100) tien=50*1678+(so-50)*1734;
+    else tien=50*1678+50*1734+(so-100)*2014;
+
+    printf("Tien dien = %.0f\n",tien);
+}
+
+// ===== CHUC NANG 5 =====
+void chucNang5(){
+    int tien;
+    printf("Nhap so tien: ");
+    scanf("%d",&tien);
+
+    printf("500k: %d\n",tien/500000);
+    tien%=500000;
+    printf("200k: %d\n",tien/200000);
+    tien%=200000;
+    printf("100k: %d\n",tien/100000);
+}
+
+// ===== CHUC NANG 6 =====
+void chucNang6(){
+    float tien;
+    printf("Nhap tien vay: ");
+    scanf("%f",&tien);
+
+    printf("Tong tien sau lai 5%% = %.2f\n",tien*1.05);
+}
+
+// ===== CHUC NANG 7 =====
+void chucNang7(){
+    float giaXe;
+    printf("Nhap gia xe: ");
+    scanf("%f",&giaXe);
+
+    printf("Tra truoc 30%% = %.2f\n",giaXe*0.3);
+    printf("Tien vay = %.2f\n",giaXe*0.7);
+}
+
+// ===== CHUC NANG 8 =====
+void chucNang8(){
+    float diem[5];
+    int i,j;
+
+    for(i=0;i<5;i++){
+        printf("Nhap diem %d: ",i+1);
+        scanf("%f",&diem[i]);
+    }
+
+    for(i=0;i<4;i++){
+        for(j=i+1;j<5;j++){
+            if(diem[i]>diem[j]){
+                float t=diem[i];
+                diem[i]=diem[j];
+                diem[j]=t;
+            }
         }
-    } while (chonChucNang != 0);
+    }
+
+    printf("Sau sap xep:\n");
+    for(i=0;i<5;i++){
+        printf("%.2f ",diem[i]);
+    }
+    printf("\n");
+}
+
+// ===== CHUC NANG 9 =====
+void chucNang9(){
+    int so;
+    printf("Nhap so du doan: ");
+    scanf("%d",&so);
+
+    int may = 5; // so co dinh
+    if(so==may) printf("Trung thuong\n");
+    else printf("Khong trung\n");
+}
+
+// ===== CHUC NANG 10 =====
+void chucNang10(){
+    int a,b,c,d;
+    printf("Nhap a b: ");
+    scanf("%d%d",&a,&b);
+
+    printf("Nhap c d: ");
+    scanf("%d%d",&c,&d);
+
+    printf("Tong = %d/%d\n",a*d+c*b,b*d);
+}
+
+// ===== MAIN =====
+int main(){
+    int chon;
+
+    do{
+        printf("\n===== MENU =====\n");
+        printf("1. Kiem tra so nguyen\n");
+        printf("2. UCLN & BCNN\n");
+        printf("3. Karaoke\n");
+        printf("4. Tien dien\n");
+        printf("5. Doi tien\n");
+        printf("6. Lai suat\n");
+        printf("7. Vay mua xe\n");
+        printf("8. Sap xep SV\n");
+        printf("9. FPOLY-LOTT\n");
+        printf("10. Phan so\n");
+        printf("0. Thoat\n");
+        printf("Nhap: ");
+        scanf("%d",&chon);
+
+        switch(chon){
+            case 1: chucNang1(); break;
+            case 2: chucNang2(); break;
+            case 3: chucNang3(); break;
+            case 4: chucNang4(); break;
+            case 5: chucNang5(); break;
+            case 6: chucNang6(); break;
+            case 7: chucNang7(); break;
+            case 8: chucNang8(); break;
+            case 9: chucNang9(); break;
+            case 10: chucNang10(); break;
+        }
+
+    }while(chon!=0);
 
     return 0;
 }
